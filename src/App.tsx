@@ -1,43 +1,21 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-interface IFormInput {
-  firstName: string;
-  check: string;
-}
+const CustomizeLink = styled(Link)`
+  text-decoration: none;
+  border: 2px solid gray;
+  padding: 5px;
+  border-radius: 10px;
+  color: black;
+  font-size: 20px;
+`;
+
 const App = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>First Name</label>
-        <input
-          {...register("firstName", {
-            required: true,
-            minLength: { value: 3, message: "3文字以上で入力して下さい" },
-          })}
-        />
-        {errors.firstName?.type === "required" && "必須です"}
-        {errors.firstName?.type === "minLength" && errors.firstName.message}
-      </div>
-
-      <div>
-        <label>Check</label>
-        <input
-          type="checkbox"
-          {...register("check", {
-            required: { value: true, message: "check is required" },
-          })}
-        />
-        {errors.check && errors.check.message}
-      </div>
-      <input type="submit" />
-    </form>
+    <>
+      <h1>App</h1>
+      <CustomizeLink to="/other">otherへ</CustomizeLink>
+    </>
   );
 };
 
