@@ -1,44 +1,49 @@
-import { useForm, SubmitHandler } from "react-hook-form";
+import React, { useState, useCallback, memo } from "react";
 
-interface IFormInput {
-  firstName: string;
-  check: string;
+interface Todo {
+  id: number;
+  text: string;
 }
-const App = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+
+interface TodosProps {
+  todos: Todo[];
+  addTodo: () => void;
+}
+
+const MyComponent = () => {
+  const [count, setCount] = useState<number>(0);
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  const increment = useCallback(() => {
+    setCount((c) => c + 1);
+  }, []);
+
+  const addTodo = useCallback(() => {
+    setTodos((t) => [...t, { id: Date.now(), text: "新しいTodo" }]);
+  }, []);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <>
+      <Todos todos={todos} addTodo={addTodo} />
+      <hr />
       <div>
-        <label>First Name</label>
-        <input
-          {...register("firstName", {
-            required: true,
-            minLength: { value: 3, message: "3文字以上で入力して下さい" },
-          })}
-        />
-        {errors.firstName?.type === "required" && "必須です"}
-        {errors.firstName?.type === "minLength" && errors.firstName.message}
+        Count: {count}
+        <button onClick={increment}>+</button>
       </div>
-
-      <div>
-        <label>Check</label>
-        <input
-          type="checkbox"
-          {...register("check", {
-            required: { value: true, message: "check is required" },
-          })}
-        />
-        {errors.check && errors.check.message}
-      </div>
-      <input type="submit" />
-    </form>
+    </>
   );
 };
 
-export default App;
+const Todos: React.FC<TodosProps> = memo(({ todos, addTodo }) => {
+  return (
+    <>
+      <h2>My Todos</h2>
+      {todos.map((todo) => {
+        return <p key={todo.id}>{todo.text}</p>;
+      })}
+      <button onClick={addTodo}>Todo追加</button>
+    </>
+  );
+});
+
+export default MyComponent;
