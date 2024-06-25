@@ -1,49 +1,21 @@
-import React, { useState, useCallback, memo } from "react";
+import { Link } from "react-router-dom";
 
-interface Todo {
-  id: number;
-  text: string;
-}
-
-interface TodosProps {
-  todos: Todo[];
-  addTodo: () => void;
-}
-
-const MyComponent = () => {
-  const [count, setCount] = useState<number>(0);
-  const [todos, setTodos] = useState<Todo[]>([]);
-
-  const increment = useCallback(() => {
-    setCount((c) => c + 1);
-  }, []);
-
-  const addTodo = useCallback(() => {
-    setTodos((t) => [...t, { id: Date.now(), text: "新しいTodo" }]);
-  }, []);
-
+const App = () => {
   return (
     <>
-      <Todos todos={todos} addTodo={addTodo} />
-      <hr />
-      <div>
-        Count: {count}
-        <button onClick={increment}>+</button>
-      </div>
+      <ul>
+        <li>
+          <Link to="/child">パラメータなし</Link>
+        </li>
+        <li>
+          <Link to="/child?param=admin">アドミン</Link>
+        </li>
+        <li>
+          <Link to="/child?param=member">メンバー</Link>
+        </li>
+      </ul>
     </>
   );
 };
 
-const Todos: React.FC<TodosProps> = memo(({ todos, addTodo }) => {
-  return (
-    <>
-      <h2>My Todos</h2>
-      {todos.map((todo) => {
-        return <p key={todo.id}>{todo.text}</p>;
-      })}
-      <button onClick={addTodo}>Todo追加</button>
-    </>
-  );
-});
-
-export default MyComponent;
+export default App;
