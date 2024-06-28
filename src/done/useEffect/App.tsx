@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Display from "./Display";
-import Register from "./Register";
+import Register from "../../Register";
 
 const App = () => {
   // カウント用
@@ -13,10 +13,10 @@ const App = () => {
 
   console.log("component loaded");
 
-  // 依存配列に「count」を設定
+  // 依存配列を省略
   useEffect(() => {
     console.log("execute useEffect");
-  }, [count]);
+  });
 
   return (
     <>
