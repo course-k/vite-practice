@@ -8,36 +8,6 @@ interface MyFormValues {
   favoriteColor: string;
 }
 
-interface Props {
-  fieldName: string;
-  label: string;
-}
-
-const MyTextField: React.FC<Props> = ({ fieldName, label }) => {
-  return (
-    <div>
-      <label htmlFor={fieldName}>{label}</label>
-      <Field id={fieldName} name={fieldName} type="text" />
-      <ErrorMessage name={fieldName} component="div" className="error" />
-    </div>
-  );
-};
-
-const MySelectField: React.FC<Props> = ({ fieldName, label }) => {
-  return (
-    <div>
-      <label htmlFor={fieldName}>{label}</label>
-      <Field id={fieldName} name={fieldName} as="select">
-        <option value="">Select a color</option>
-        <option value="red">Red</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-      </Field>
-      <ErrorMessage name={fieldName} component="div" className="error" />
-    </div>
-  );
-};
-
 const MyForm: React.FC = () => {
   const [userNameState, setUserNameState] = useState("John");
   return (
@@ -72,9 +42,32 @@ const MyForm: React.FC = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <MyTextField fieldName="userName" label="User Name" />
-            <MyTextField fieldName="email" label="Email" />
-            <MySelectField fieldName="favoriteColor" label="Favorite Color" />
+            <div>
+              <label htmlFor="userName">userName</label>
+              <Field id="userName" name="userName" type="text" />
+              <ErrorMessage name="userName" component="div" className="error" />
+            </div>
+
+            <div>
+              <label htmlFor="email">Email</label>
+              <Field id="email" name="email" type="email" />
+              <ErrorMessage name="email" component="div" className="error" />
+            </div>
+
+            <div>
+              <label htmlFor="favoriteColor">Favorite Color</label>
+              <Field id="favoriteColor" name="favoriteColor" as="select">
+                <option value="">Select a color</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+              </Field>
+              <ErrorMessage
+                name="favoriteColor"
+                component="div"
+                className="error"
+              />
+            </div>
 
             <div>
               <button type="submit" disabled={isSubmitting}>
