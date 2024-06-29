@@ -1,4 +1,4 @@
 import ReactDOM from "react-dom/client";
-import App from "./done/useEffect/App";
+import MyImage from "./MyImage";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")!).render(<MyImage />);
