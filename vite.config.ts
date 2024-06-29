@@ -8,7 +8,7 @@ export default defineConfig({
     rollupOptions: {
       external: [
         // 除外したいフォルダやファイルのパターンを指定
-        /^\/src\/done\//,
+        /^src\/done\//,
       ],
     },
   },
