@@ -1,13 +1,11 @@
-import React, { MouseEvent, useState } from "react";
-import { ChangeEvent } from "react";
+import React, { ChangeEvent, useState } from "react";
 
 const COLORS = ["red", "blue", "yellow"];
 
 const App = () => {
   const [radioVal, setRadioVal] = useState(COLORS[0]);
-  const clickHandler = (event: MouseEvent<HTMLInputElement>) => {
-    // console.log(event.target.value);
-    console.log(event.currentTarget.value);
+  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.value);
   };
   return (
     <>
@@ -21,7 +19,7 @@ const App = () => {
               checked={color === radioVal}
               value={color}
               name="colors"
-              onChange={clickHandler}
+              onChange={changeHandler}
             />
           </React.Fragment>
         );
