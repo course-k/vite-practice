@@ -1,5 +1,3 @@
 import ReactDOM from "react-dom/client";
-import CloneDeepPractice from "./CloneDeepPractice";
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <CloneDeepPractice />
-);
+import MergePractice from "./MergePractice";
+ReactDOM.createRoot(document.getElementById("root")!).render(<MergePractice />);
