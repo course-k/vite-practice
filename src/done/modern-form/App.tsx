@@ -1,5 +1,5 @@
 // App.tsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { Container, Snackbar, Alert } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -7,7 +7,7 @@ import { ja } from "date-fns/locale";
 import UserForm from "./UserForm";
 import { FormValues } from "./types";
 
-const App: React.FC = () => {
+const App = () => {
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
@@ -16,8 +16,8 @@ const App: React.FC = () => {
 
   const handleSubmit = async (values: FormValues) => {
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // フォーム送信処理を擬似的に表現
+      await new Promise((resolve) => setTimeout(resolve, 100));
       console.log(values); // フォームの値をログ出力
       setSnackbar({
         open: true,

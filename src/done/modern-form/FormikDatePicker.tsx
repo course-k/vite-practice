@@ -20,7 +20,6 @@ const FormikDatePicker = ({ name, label }: Props) => {
       }}
       slotProps={{
         textField: {
-          fullWidth: true,
           error: !!errorText,
           helperText: errorText,
         },
