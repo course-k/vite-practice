@@ -1,3 +1,3 @@
 import ReactDOM from "react-dom/client";
-import MergePractice from "./MergePractice";
-ReactDOM.createRoot(document.getElementById("root")!).render(<MergePractice />);
+import App from "./App";
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
