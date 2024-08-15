@@ -1,3 +1,3 @@
 import ReactDOM from "react-dom/client";
-import ParentComponent from "./use-callback/ParentComponent";
-ReactDOM.createRoot(document.getElementById("root")!).render(<ParentComponent />);
+import App from "./rnd/App";
+ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
