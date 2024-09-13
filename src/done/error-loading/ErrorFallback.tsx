@@ -1,6 +1,7 @@
 import { FallbackProps } from "react-error-boundary";
 
 const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
+  console.table(error);
   return (
     <div role="alert">
       <p>エラーが発生しました:</p>

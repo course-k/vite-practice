@@ -1,3 +1,3 @@
 import ReactDOM from "react-dom/client";
-import App from "./error-loading/App";
-ReactDOM.createRoot(document.getElementById("root")!).render(<App />);
+import TaskManager from "./field-array/TaskManager";
+ReactDOM.createRoot(document.getElementById("root")!).render(<TaskManager />);
